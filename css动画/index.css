@@ -1,0 +1,52 @@
+/* .box {
+  height: 50px;
+  width: 50px;
+  background-color: red;
+  animation: rotate 2s ;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+} */
+
+.box {
+  height: 10px;
+  width: 50%;
+  border: 1px solid;
+  background: linear-gradient(red, red);
+  background-size: 0;
+  background-repeat: no-repeat;
+  animation: move 2s linear forwards;
+}
+
+.box:hover {
+  animation-play-state: paused;
+}
+
+@keyframes move {
+  100% {
+    background-size: 100%;
+  }
+}
+
+/* .box {
+  height: 10px;
+  width: 500px;
+  border: 1px solid;
+  background-color: aqua;
+  animation: rotate 2s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .bigblock{
+            width: 800px;
+            height: 100px;
+            display: flex;
+            flex-direction: row;
+            margin: auto;
+
+        }
+        .bigblock>div{
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 100px;
+        }
+        .bigblock>div:nth-child(3){
+            flex-grow: 2;
+            flex-shrink: 2;
+                    }
+/* 
+        .bigblock {
+          width: 800px;
+          height: 100px;
+          margin: auto;
+          display: flex;
+        } 
+        .bigblock div {
+          flex-shrink: 1;
+          flex-basis: 300px;
+        }
+        .box3 {
+          flex-grow: 2;
+          flex-shrink: 2;
+        } */
+    </style>
+</head>
+<body>
+<div class="bigblock">
+    <div class="box1" style="background: red">A</div>
+    <div class="box2" style="background: green;">B</div>
+    <div class="box3" style="background: burlywood;">C</div>
+</div>
+</body>
+</html>

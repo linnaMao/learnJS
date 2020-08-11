@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+/* 去除浮动流 */
+.border {
+  background-color: #444;
+}
+
+.border:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.children {
+  float: right;
+  height: 100px;
+  background-color: #ccc;
+}
+
+/* 形成三角形 */
+.angular {
+  width: 0;
+  height: 0;
+  border: 50px solid transparent;
+  border-bottom: 50px solid #999;
+}
+
+/* 形成0.5px的线 */
+.line {
+  position: relative;
+}
+
+.line:after {
+  content: '1';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000000;
+  transform: scaleY(0.5);
+}
+
+
+/* 利用伪类进行阴影操作 */
+.before {
+  padding: 1em;
+  background-color: #fff;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.before:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+.after {
+  position: relative;
+  padding: 1em;
+  background-color: #fff;
+}
+.after:before {
+  content: "";
+  position: absolute;  
+  top: 0;
+  right: 0;
+  bottom: 0;  
+  left: 0;
+  z-index: -1;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  will-change: opacity;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.after:hover:before {
+  opacity: 1;
+}
+
+.container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #333;
+}
+.arrow:before {
+  z-index: 9999;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #ccc;
+  position: absolute;
+  left: 100px;
+  top: 30px;
+}
+
+/* target选择器 */
+main {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+}
+
+.div {
+  width: 100px;
+  height: 100px;
+  background-color: #0ff;
+  margin: 5px;
+  transition: flex 1s;
+}
+
+.div:target {
+  flex: 1;
+  background-color: purple;
+}
+
+body {
+  counter-reset: box;
+}
+
+section {
+  overflow: hidden;
+  width: 600px;
+  margin: 3px;
+  font-size: 20px;
+  line-height: 50px;
+  background-color: #415481;
+  text-align: center;
+  counter-reset: box;
+  counter-increment: row;
+}
+
+section .childrenDiv{
+  width: 50px;
+  height: 50px;
+  background-color: aqua;
+  margin: 3px;
+  float: left;
+  counter-increment: box;
+}
+section:before {
+  content: "第"counter(row)"行";
+  float: left;
+}
+.childrenDiv:before {
+  content: counter(row)'.'counter(box);
+}
+
+.main {
+  text-align-last: justify;
+  width: 600px;
+}
+
+.mainDiv {
+  width: 50px;
+  height: 50px;
+  background-color: aqua;
+  display: inline-block;
+}
+
+.mainDiv:nth-child(odd) {
+  width: 100px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件流</title>
+</head>
+<body>
+	<div>
+		<p id="parEle">
+			我是父元素
+			<span id="sonEle">我是子元素</span>
+		</p>
+	</div>
+</body>
+</html>
+
+<!-- 
+  在事件流中，三阶段： 事件捕获 -> 目标阶段 -> 事件冒泡 
+  但是在目标阶段不管用，会按照先后顺序执行，不会按照事件流
+ -->
+<script type="text/javascript">
+	let sonEle = document.getElementById('sonEle');
+	let parEle = document.getElementById('parEle');
+
+	parEle.addEventListener('click', function() {
+		console.log('父级冒泡');
+	}, false); 
+	//false是事件冒泡， true是事件捕获
+
+	parEle.addEventListener('click', function() {
+		console.log('父级捕获');
+  }, true);
+  
+  sonEle.addEventListener('click', function() {
+		console.log('子级冒泡');
+  }, false); 
+
+	sonEle.addEventListener('click', function() {
+    event.stopPropagation()
+		console.log('子级捕获');
+	}, true);
+
+  //false是事件冒泡， true是事件捕获
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件流</title>
+</head>
+<body>
+  <div id="parent">
+    我是父亲
+    <div id="son">
+      我是孩子
+    </div>
+  </div>
+
+  <script>
+    const parent = document.getElementById('parent')
+    const son = document.getElementById('son')
+
+    // 父亲捕获
+    parent.addEventListener('click', () => {
+      console.log('父亲捕获')
+    }, true)
+    // 父亲冒泡
+    parent.addEventListener('click', () => {
+      console.log('父亲冒泡')
+    }, false)
+
+     // 孩子冒泡
+     son.addEventListener('click', () => {
+      console.log('孩子冒泡')
+    }, false)
+    // 孩子捕获
+    son.addEventListener('click', () => {
+      console.log('孩子捕获')
+    }, true)
+   
+  </script>
+</body>
+</html>
