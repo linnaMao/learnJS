@@ -1,94 +1,101 @@
-// Object.getPrototypeOf()：用来获取对象的原型
-
-// 原型继承
-// function Father() {
-//   this.name = "father";
-//   this.eat = function() {
-//     console.log(this.name + " eat hamburg");
-//   }
+// 原型链继承
+// 方法会被所有实例共享
+// 创建实例的时候不能向超类构造函数赋值
+// function Father(name) {
+//   this.name = name
 // }
 
-// function Children() {
-//   this.name = "children"
-// }
-
-// Children.prototype = new Father();
-// const children = new Children();
-// children.eat(); //children eat hamburg
-
-
-// 组合继承
-// function Super(name) {
-//   this.name = name;
-//   this.eat = ["吃", "喝", "嚼"];
-//   this.sayName = function() {
-//     console.log(this.name);
-//   }
-// }
-
-// function Sub(name, age) {
-//   this.age = age;
-//   Super.call(this, name);
-//   this.sayAge = function() {
-//     console.log(this.age)
-//   }
-// }
-
-// Sub.prototype = new Super();
-// const sub = new Sub("PYC", "27");
-// sub.eat.push("吞");
-// console.log(sub.eat);
-// sub.sayName();
-// sub.sayAge();
-
-// const sub1 = new Sub("MLZ", "18");
-// console.log(sub1.eat);
-// sub1.sayName();
-// sub1.sayAge();
-
-
-
-// function Father() {
-//   this.name = 'father'
-//   this.age = function() {
-//     console.log(this.name + ' 18 years old')
-//   }
+// Father.prototype.getName = function() {
+//   console.log('father ' + this.name);
 // }
 
 // function Son() {
-//   this.name = 'son'
+//   this.name = 'xixi'
 // }
 
-
 // Son.prototype = new Father()
-// const son = new Son()
-// const father = new Father()
-// son.name = 'mlz'
-// father.age()
-// son.age()
 
-// function Father() {
-//   this.name = 'linna'
-//   this.age  = function() {
-//     console.log(this.name + ' is 18 years old')
+// const son = new Son()
+// const son1 = new Son()
+// son.getName()
+// son1.getName()
+
+// 借用构造函数：在子类内部调用超类构造函数
+// 解决了原型链继承的缺陷
+// 方法在函数内部定义，没有复用性
+// 每次创建一次实例，方法也会被重新创建，并且不能访问到父构造函数原型上的属性和方法
+
+// function Father(name, sex) {
+//   this.name = name
+//   this.sex = sex
+//   this.getName = function() {
+//     console.log('father ' + this.name);
 //   }
 // }
 
-// function Son() {
-//   this.name = 'mlz'
+// Father.prototype.getSex = function() {
+//   console.log(this.sex);
+// }
+
+// function Son(name, sex) {
+//   Father.call(this, name, sex)
+// }
+
+// const son = new Son('haha')
+// const son1 = new Son('xixi')
+// son.getName()
+// son1.getName()
+
+// 组合继承：利用原型链实现对原型属性和方法的继承，利用借用构造函数实现对实例属性的继承
+// 结合了原型链继承和借用构造函数的优点
+// 但是需要调用两次父类。带来性能上的损耗
+
+// function Father(name, sex) {
+//   this.name = name
+//   this.sex = sex
+//   this.getName = function() {
+//     console.log('father ' + this.name);
+//   }
+// }
+
+// Father.prototype.getSex = function() {
+//   console.log('father ' + this.sex);
+// }
+
+// function Son(name, sex) {
+//   Father.call(this, name, sex)
 // }
 
 // Son.prototype = new Father()
-// const son = new Son()
-// son.age()
+// const son = new Son('haha', 'man')
+// const son1 = new Son('xixi', 'man')
+// son.getName()
+// son.getSex()
 
-function Dog(name, color) {
+
+// 寄生式继承：优化组合继承，组合继承再继承父类函数的时候调用了构造函数
+// 利用Object.create创建中间对象
+
+function Father(name, sex) {
   this.name = name
-  this.color = color
-  this.bark = () => {
-      console.log(name + ' wangwang~')
+  this.sex = sex
+  this.getName = function() {
+    console.log('father ' + this.name);
   }
 }
 
-const dog1 = new Dog('dog1', 'black')
-const dog2 = new Dog('dog2', 'white')
+Father.prototype.getSex = function() {
+  console.log('father ' + this.sex);
+}
+
+function Son(name, sex) {
+  Father.call(this, name, sex)
+}
+
+Son.prototype = Object.create(Father.prototype)
+const son = new Son('haha', 'man')
+const son1 = new Son('xixi', 'man')
+son.getName()
+son.getSex()
+
+

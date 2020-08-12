@@ -1,4 +1,4 @@
-// var name = "World";
+var name = "World";
 // (function() {
 //     if(name === undefined) {;
 //       var name = 'MLZ';
@@ -12,17 +12,15 @@
 // // 因为变量提升的问题如下，利用let让它成为块级作用域可以改变结果
 // function foo() {
 //   return function() {
-//     var name
 //     console.log(name)
 //     if(name === undefined) {
-//       name = 'MLZ';
+//       let name = 'MLZ';
 //       console.log("byebye " + name)
 //     } else {
 //       console.log('hello ' + name)
 //     }
 //   }
 // }
-
 // foo()()
 
 // function foo() {
@@ -73,16 +71,15 @@
 
 var data = [];
 
-// for (var i = 0; i < 3; i++) {
-//     data[i] = (
-//       function(i) {
-//         return function() {
-//           console.log(i);
-//         }
-//       }
-//   )(i)
-// }
-
+for (var i = 0; i < 3; i++) {
+    data[i] = (
+      function(i) {
+        return function() {
+          console.log(i);
+        }
+      }
+  )(i)
+}
 // arguments的callee解决闭包问题
 // for (var i = 0; i < 3; i++) {
 //   (data[i] = function() {
