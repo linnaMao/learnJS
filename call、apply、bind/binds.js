@@ -1,18 +1,28 @@
 
-// Function.prototype.bind = function(context) {
-//   const self = this
-//   return function() {
-//     console.log(context)
-//     return self.call(context)
-//   }
-// }
+Function.prototype.myCall = function(context, ...args) {
+  // node环境下没有window
+  // var context = context || window
+  context.fn = this
+  const results = context.fn(...args)
+  context.fn()
+  delete context.fn
+  return results
+}
+
+Function.prototype.myBind = function(context) {
+  return () => {
+    this.myCall(context)
+  }
+}
 
 let foo = {
   value: 1
 }
 
 function bar(name, age) {
-  console.log(this.value, name, age);
+  return {
+    name
+  }
 }
 
-bar.bind(foo, 'kevin', 18)()
+bar.myBind(foo, 'kevin', 18)()
