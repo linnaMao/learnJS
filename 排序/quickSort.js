@@ -14,3 +14,9 @@ function quickSort(arr) {
 }
 
 console.log(quickSort(arr));
+
+function quick(arr) {
+  if (arr.length < 2) return arr
+  const pivot = Math.floor(arr.length / 2)
+  const pivotValue = arr
+}

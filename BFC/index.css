@@ -1,0 +1,16 @@
+.xxx::after {
+  content:'';
+  display: inline-block;
+  width: 10px;
+  height:10px;
+  background: #3385ff;
+}
+
+.content {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  border: 1px solid;
+  padding: 20px;
+  box-sizing: border-box;
+}

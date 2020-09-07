@@ -76,6 +76,13 @@
 // 寄生式继承：优化组合继承，组合继承再继承父类函数的时候调用了构造函数
 // 利用Object.create创建中间对象
 
+function create(pro) {
+  function F() {}
+  F.prototype = pro
+
+  return new F()
+}
+
 function Father(name, sex) {
   this.name = name
   this.sex = sex
@@ -92,6 +99,7 @@ function Son(name, sex) {
   Father.call(this, name, sex)
 }
 
+Son.prototype = new Father()
 Son.prototype = Object.create(Father.prototype)
 const son = new Son('haha', 'man')
 const son1 = new Son('xixi', 'man')

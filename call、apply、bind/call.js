@@ -5,16 +5,25 @@
 
 // 1、将函数设为对象的属性
 // 2、执行函数
-// 3、删除函数
-Function.prototype.myCall = function(context, ...args) {
-  // node环境下没有window
-  // var context = context || window
-  console.log(args);
+// // 3、删除函数
+// Function.prototype.myCall = function(context, ...args) {
+//   // node环境下没有window
+//   // var context = context || window
+//   console.log(args);
+//   context.fn = this
+//   const results = context.fn(...args)
+//   context.fn()
+//   delete context.fn
+//   return results
+// }
+
+
+
+Function.prototype.myCall1 = function(context, args) {
   context.fn = this
-  const results = context.fn(...args)
-  context.fn()
+  let result = context.fn(args)
   delete context.fn
-  return results
+  return result
 }
 
 var foo = {
@@ -26,7 +35,7 @@ function bar(name) {
 }
 
 
-bar.myCall(foo, 'haha', 18)
+bar.myCall1(foo, ['haha', 18])
 
 
  

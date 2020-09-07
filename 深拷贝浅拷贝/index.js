@@ -7,12 +7,12 @@
 // console.log(target, source)
 
 // 扩展运算符
-let obj = {a:1,b:{c:1}};
-let obj1 = obj
-let obj2 = {...obj};
-obj2.a = 3
-obj2.b.c = 3
-console.log(obj, obj2);
+// let obj = {a:1,b:{c:1}};
+// let obj1 = obj
+// let obj2 = {...obj};
+// obj2.a = 3
+// obj2.b.c = 3
+// console.log(obj, obj2);
 
 
 
@@ -71,6 +71,27 @@ console.log(obj, obj2);
 // myObj2.a.b = 2
 // console.log(myObj, myObj2)
 
+let obj = {
+  a: [1,2,3],
+  b: 6,
+  c: {
+    d: 2
+  },
+  e: undefined
+  
+}
 
+function deepClone(obj) {
+  if (typeof obj !== 'object') return;
+  let cloneObj = obj instanceof Array ? [] : {}
+  for(let key in obj) {
+    cloneObj[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
+  }
+  return cloneObj
+}
+
+let obj2 = deepClone(obj)
+obj2.c.d = 3
+console.log(obj, obj2);
 
 

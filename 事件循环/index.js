@@ -7,7 +7,7 @@
 // 没有微任务 继续执行宏任务 5
 // 6 微任务7
 // 7
-console.log(1)
+// console.log(1)
 
 new Promise((resolve, reject) => {
   console.log(2)
@@ -17,17 +17,64 @@ new Promise((resolve, reject) => {
   resolve()
 }).then(() => {
   console.log(4)
-})
-
-setTimeout(() => {
-  console.log(5)
-  new Promise((resolve, reject) => {
-    console.log(6)
+  new Promise((resolve) => {
+    console.log(12);
     resolve()
   }).then(() => {
-    console.log(7)
+    console.log(11);
+  }).then(() => {
+    console.log(13);
   })
-}, 0);
+}).then(() => {
+  console.log(14);
+})
 
-console.log(8)
+// setTimeout(() => {
+//   console.log(5)
+//   new Promise((resolve, reject) => {
+//     console.log(6)
+//     resolve()
+//   }).then(() => {
+//     console.log(7)
+//   })
+// }, 0);
 
+// console.log(8)
+
+// console.log('script start')
+// async function async1(){
+//   console.log('async1 start')
+//   await async2()
+//   console.log('async1 end')
+//   console.log('async1 end1');
+// }
+// async function async2(){
+//   console.log('async2')
+// }     
+// setTimeout(function(){
+//   console.log('setTimeout') 
+// },0)  
+// async1();
+// new Promise(function(resolve){
+//   console.log('promise1')
+//   resolve();
+// }).then(function(){
+//   console.log('promise2')
+// })
+// console.log('script end')
+
+// class Sleep {
+//   constructor(timeout) {
+//     this.timeout = timeout;
+//   }
+//   then(resolve, reject) {
+//     const startTime = Date.now();
+//     setTimeout(() => resolve(Date.now() - startTime),
+//                this.timeout);
+//   }
+// }
+
+// (async () => {
+//   const actualTime = await new Sleep(1000);
+//   console.log(actualTime);
+// })()

@@ -24,6 +24,6 @@ arr = [1, [2, [3, 4]], 5]
 
 // // 只可以扁平化一层
 
-let newArr = [].concat(...arr)
-console.log(newArr);
+// let newArr = [].concat(...arr)
+// console.log(newArr);
 

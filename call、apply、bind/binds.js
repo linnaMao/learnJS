@@ -9,9 +9,10 @@ Function.prototype.myCall = function(context, ...args) {
   return results
 }
 
-Function.prototype.myBind = function(context) {
+Function.prototype.myBind = function(context, ...args) {
+  const that = this
   return () => {
-    this.myCall(context)
+    return that.myCall(context, ...args)
   }
 }
 
@@ -21,8 +22,9 @@ let foo = {
 
 function bar(name, age) {
   return {
-    name
+    name,
+    age
   }
 }
 
-bar.myBind(foo, 'kevin', 18)()
+console.log(bar.myBind(foo, 'kevin', 18)());
