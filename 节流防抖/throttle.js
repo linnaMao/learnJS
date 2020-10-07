@@ -22,6 +22,31 @@ function getUserAction(e) {
 //   }
 // }
 
+function throttle(func, wait) {
+  let pre = 0
+  return function() {
+    let arg = arguments, context = this
+    let now = +new Date()
+    if (now - pre > wait) {
+      func.apply(context, arg)
+      pre = now
+    }
+  }
+}
+
+function throttle(func, wait) {
+  let timeout
+  return function() {
+    let arg = arguments, context = this
+    if (!timeout) {
+      timeout = setTimeout(() => {
+        timeout = null
+        func.apply(context, arg)
+      }, wait);
+    }
+  }
+}
+
 // 定时器
 // 规定时间后执行
 // function throttle(func, wait) {

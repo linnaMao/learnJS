@@ -1,5 +1,5 @@
 // 双层循环
-let array = [1, 1, '1', '1']
+let array = [1, 1, 2, 2]
 
 // function unique(array) {
 //   let res = []
@@ -19,18 +19,20 @@ let array = [1, 1, '1', '1']
 // unique(array)
 
 // indexOf
-// function unique(array) {
-//   let res = []
-//   for (let i = 0; i < array.length; i++) {
-//     let current = array[i]
-//     if (res.indexOf(current) === -1) {
-//       res.push(array[i])
-//     }
-//   }
-//   console.log(res);
-// }
+function unique(array) {
+  let res = {}
+  let newArr = []
+  for (let i = 0; i < array.length; i++) {
+    let current = array[i]
+    if (!res[current]) {
+      res[current] = true
+      newArr.push(current)
+    }
+  }
+  return newArr
+}
 
-// unique(array)
+console.log(unique(array));
 
 // 排序后去重
 
@@ -41,4 +43,4 @@ let array = [1, 1, '1', '1']
 //   const seen = new Map()
 //   return arr.filter((a) => !seen.has(a) && seen.set(a, 1))
 // }
-console.log(Array.from([...new Set(array)]));
+// console.log(Array.from([...new Set(array)]));
