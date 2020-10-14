@@ -107,3 +107,25 @@
 // son.getName()
 // son.getSex()
 
+function Father(name) {
+  this.name = name
+  this.getName = function() {
+    console.log(this.name);
+  }
+}
+
+// Father.prototype.getName = function() {
+//   console.log(this.name);
+// }
+
+function Son(name) {
+  Father.call(this, name)
+}
+
+
+let son = new Son('hah')
+
+son.getName()
+
+
+

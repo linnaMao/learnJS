@@ -23,26 +23,28 @@ function getUserAction(e) {
 // }
 
 function throttle(func, wait) {
-  let pre = 0
+  let timeout
   return function() {
-    let arg = arguments, context = this
-    let now = +new Date()
-    if (now - pre > wait) {
-      func.apply(context, arg)
-      pre = now
+    let context = this
+    let args = arguments
+    if(!timeout) {
+      timeout = setTimeout(() => {
+        timeout = null
+        func.apply(context, args)
+      }, wait);
     }
   }
 }
 
 function throttle(func, wait) {
-  let timeout
+  let preTime = 0
   return function() {
-    let arg = arguments, context = this
-    if (!timeout) {
-      timeout = setTimeout(() => {
-        timeout = null
-        func.apply(context, arg)
-      }, wait);
+    let context = this
+    let args = arguments
+    let nowTime = +new Date()
+    if (nowTime - preTime > wait) {
+      func.apply(context, args)
+      preTime = nowTime
     }
   }
 }

@@ -95,3 +95,10 @@ obj2.c.d = 3
 console.log(obj, obj2);
 
 
+function deepClone(obj) {
+  let cloneObj = obj instanceof Array ? [] : {}
+  for (let key in obj) {
+   cloneObj[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
+  }
+}
+

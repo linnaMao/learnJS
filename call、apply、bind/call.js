@@ -19,23 +19,55 @@
 
 
 
-Function.prototype.myCall1 = function(context, args) {
-  context.fn = this
-  let result = context.fn(args)
-  delete context.fn
-  return result
-}
+// Function.prototype.myCall1 = function(context, args) {
+//   context.fn = this
+//   let result = context.fn(args)
+//   context.fn()
+//   delete context.fn
+//   return result
+// }
 
-var foo = {
-  value: 1
-}
+// Function.prototype.myCall1 = function(context, args) {
+//   context.fn = this
+//   let result = context.fn(...args)
+//   context.fn()
+//   delete context.fn
+//   return result
+// }
 
-function bar(name) {
-  console.log(this.value, name);
-}
+// var foo = {
+//   value: 1
+// }
+
+// function bar(name) {
+//   console.log(this.value, name);
+// }
 
 
-bar.myCall1(foo, ['haha', 18])
+// bar.myCall1(foo, ['haha', 18])
 
 
- 
+
+
+ Function.prototype.myCall = function(context, args) {
+   context.fn = this
+   let result = context.fn(args)
+   context.fn()
+   delete context.fn
+   return result
+ }
+
+
+ let foo = {
+   name: 'hah'
+ }
+
+ function bar(value) {
+   return {
+     name: this.name,
+     value
+
+   }
+ }
+
+ console.log(bar.myCall(foo, ['3']));

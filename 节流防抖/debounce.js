@@ -25,16 +25,19 @@ function getUserAction() {
 //   }
 // }
 
-function debounce(func, wait) {
+function debounce(fun, wait) {
   let timeout
   return function() {
-    let that = this, arg = arguments
-    if(timeout) clearTimeout(timeout)
-    timeout = setTimeout(() => {
-      func.apply(that, arg)
+    let context = this
+    let args = arguments
+    if (timeout) clearTimeout(timeout)
+    setTimeout(() => {
+      fun.apply(context, args)
     }, wait);
   }
 }
+
+
 
 container.onmousemove = debounce(getUserAction, 1000, true)
 

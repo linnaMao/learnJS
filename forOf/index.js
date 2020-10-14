@@ -34,7 +34,10 @@ newObj[Symbol.iterator] = function() {
 Object.prototype[Symbol.iterator] = function* () {
   let keys = Object.keys(this)
   for (let i = 0; i < keys.length; i++) {
-    yield this[keys[i]]
+    yield {
+      key: keys[i],
+      value: this[keys[i]]
+    }
   }
 }
 

@@ -28,10 +28,10 @@ function New(foo, ...args) {
 let newSon =  New(Parent, 18, 'linna')
 newSon.sayAge() 
 
-// function myNew(foo) {
-//   var obj = {}
-//   obj._proto_ = foo.prototype
-//   foo.apply(this, arguments)
-//   return obj 
-// }
+function myNew(foo, ...args) {
+  let obj = {}
+  obj.__proto__ = foo.prototype
+  let result = foo.apply(obj, args)
+  return typeof foo === 'object' ? result : obj
+}
 

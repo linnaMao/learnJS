@@ -14,7 +14,7 @@
   }
 } */
 
-.box {
+/* .box {
   height: 10px;
   width: 50%;
   border: 1px solid;
@@ -32,7 +32,7 @@
   100% {
     background-size: 100%;
   }
-}
+} */
 
 /* .box {
   height: 10px;
@@ -50,3 +50,11 @@
     transform: rotate(360deg);
   }
 } */
+
+.box{
+  height: 0;
+  width: 0;
+  border: 100px solid transparent;
+  border-top: 100px solid;
+  border-left: 100px solid;
+}

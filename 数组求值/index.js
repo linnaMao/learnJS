@@ -21,8 +21,25 @@ arr.sort((a, b) => {
   return a - b
 })
 
-console.log(arr[arr.length - 1]);
+// console.log(arr[arr.length - 1]);
 
-console.log(Math.max.apply(null, arr));
+// console.log(Math.max.apply(null, arr));
 
-console.log(Math.max(...arr));
+// console.log(Math.max(...arr));
+
+function add(arr) {
+  arr.reduce((res, item) => {
+    res = res + item
+    return res
+  }, 0)
+}
+
+function add1(arr) {
+  let sum = 0
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i]
+  }
+  return sum
+}
+
+console.log(add1(arr));

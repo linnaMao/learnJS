@@ -10,11 +10,17 @@ Function.prototype.myCall = function(context, ...args) {
 }
 
 Function.prototype.myBind = function(context, ...args) {
-  const that = this
   return () => {
-    return that.myCall(context, ...args)
+    return this.myCall(context, ...args)
   }
 }
+
+// Function.prototype.myBind = function(context, ...args) {
+//   const that = this
+//   return () => {
+//     return that.myCall(context, ...args)
+//   }
+// }
 
 let foo = {
   value: 1

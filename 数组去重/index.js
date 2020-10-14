@@ -1,5 +1,5 @@
 // 双层循环
-let array = [1, 1, 2, 2]
+let arr = [1, 1, 2, 2]
 
 // function unique(array) {
 //   let res = []
@@ -19,20 +19,20 @@ let array = [1, 1, 2, 2]
 // unique(array)
 
 // indexOf
-function unique(array) {
-  let res = {}
-  let newArr = []
-  for (let i = 0; i < array.length; i++) {
-    let current = array[i]
-    if (!res[current]) {
-      res[current] = true
-      newArr.push(current)
-    }
-  }
-  return newArr
-}
+// function unique(array) {
+//   let res = {}
+//   let newArr = []
+//   for (let i = 0; i < array.length; i++) {
+//     let current = array[i]
+//     if (!res[current]) {
+//       res[current] = true
+//       newArr.push(current)
+//     }
+//   }
+//   return newArr
+// }
 
-console.log(unique(array));
+// console.log(unique(array));
 
 // 排序后去重
 
@@ -44,3 +44,28 @@ console.log(unique(array));
 //   return arr.filter((a) => !seen.has(a) && seen.set(a, 1))
 // }
 // console.log(Array.from([...new Set(array)]));
+
+
+function unique(arr) {
+  let newArr = []
+  let obj = {}
+  for (let i = 0; i < arr.length; i++) {
+    let current = arr[i]
+    if (!obj[current]) {
+      obj[current] = true
+      newArr.push(current)
+
+    }
+    // if (newArr.indexOf(arr[i]) === -1) {
+    //   newArr.push(arr[i])
+    // } 
+  }
+  return newArr
+} 
+
+// let a = new Set()
+// arr.forEach((i) => a.add(i))
+// console.log([...new Set(arr)]);
+
+console.log(unique(arr));
+
