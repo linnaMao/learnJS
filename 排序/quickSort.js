@@ -16,13 +16,17 @@ const arr = [5,6,3,4,1,2,7 ,8 ,10,9]
 // console.log(quickSort(arr));
 
 function quick(arr) {
-  let pivot = Math.floor(arr.length/2)
+  let pivot = Math.floor(arr.length)
   let pivotValue = arr.splice(pivot, 1)[0]
   let leftArr = [], rightArr = []
-  arr.forEach(item => {
-    item > pivotValue ? rightArr.push(item) : leftArr.push(item)
-  });
-  return [...quick(leftArr), pivotValue, ...quick(rightArr)]
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < pivotValue) {
+      leftArr.push(arr[i])
+    } else {
+      rightArr.push(arr[i])
+    }
+  }
+  return [...quick(leftArr, pivotValue, ...quick(rightArr))]
 }
 
 console.log(quick(arr));

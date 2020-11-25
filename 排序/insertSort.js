@@ -13,4 +13,17 @@ function insertSort(arr) {
   return arr
 }
 
+function insert(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let preIndex = i - 1
+    let current = arr[i]
+    if (arr[preIndex] > current && preIndex >= 0) {
+      arr[preIndex + 1] = arr[preIndex]
+      preIndex --
+    }
+    arr[preIndex + 1] = current
+  }
+  return arr
+}
+
 console.log(insertSort(arr)); 

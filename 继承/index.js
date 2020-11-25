@@ -128,4 +128,21 @@ let son = new Son('hah')
 son.getName()
 
 
+function Father(name) {
+  this.name = name
+}
+
+Father.prototype.getName = function() {
+  console.log(this.name);
+}
+
+function Son() {
+
+}
+
+Son.prototype = new Father()
+
+let son = new Son()
+
+
 

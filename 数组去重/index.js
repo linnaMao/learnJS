@@ -48,24 +48,26 @@ let arr = [1, 1, 2, 2]
 
 function unique(arr) {
   let newArr = []
-  let obj = {}
+  let newObj = {}
   for (let i = 0; i < arr.length; i++) {
     let current = arr[i]
-    if (!obj[current]) {
-      obj[current] = true
+    if (!newObj[current]) {
+      newObj[current] = true
       newArr.push(current)
-
     }
+
     // if (newArr.indexOf(arr[i]) === -1) {
     //   newArr.push(arr[i])
-    // } 
+    // }
   }
   return newArr
-} 
+}
 
 // let a = new Set()
 // arr.forEach((i) => a.add(i))
 // console.log([...new Set(arr)]);
 
 console.log(unique(arr));
+
+
 

@@ -1,11 +1,6 @@
-var a = {
-  value: 1
-}
-function foo(a) {
-  a.value = 2
-  console.log(a.value);
-}
+const path = require('path')
 
-foo(a)
-
-console.log(a.value);
+const matchSVGSprite = new RegExp('assets\\' + path.sep + 'icons\\' + path.sep || 'components\\' + path.sep + 'Base\\'
++ path.sep + 'Icon\\' + path.sep + 'icons\\' + path.sep);
+// const matchSVGSprite = /assets\/icons\/|components\/Base\/Icon\/icons\//
+console.log(matchSVGSprite)

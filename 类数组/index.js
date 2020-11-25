@@ -14,3 +14,5 @@ function foo(...arrayLike) {
 }
 
 foo()
+
+console.log(Array.prototype.slice.call(arrayLike, 0));

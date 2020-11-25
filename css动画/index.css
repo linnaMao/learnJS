@@ -52,9 +52,48 @@
 } */
 
 .box{
-  height: 0;
-  width: 0;
-  border: 100px solid transparent;
-  border-top: 100px solid;
-  border-left: 100px solid;
+  position: relative;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  border: 1px solid;
+  
+}
+
+.first {
+  position: absolute;
+  height: 76px;
+  width: 76px;
+  border-radius: 50%;
+  border: 1px solid ;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  transform: rotate(45deg);
+  top: 11px;
+  left: 11px;
+}
+
+.second {
+  position: absolute;
+  width: 50px;
+  height: 15px;
+  top: 35px;
+  left: 0;
+  transform: translateX(25px);
+}
+
+.second div {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid;
+  display: inline-block
+}
+
+.leftEye {
+  float: left;
+}
+
+.rightEye {
+  float: right;
 }
