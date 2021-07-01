@@ -9,25 +9,37 @@
 // 7
 // console.log(1)
 
-new Promise((resolve, reject) => {
-  console.log(2)
+const { resolve } = require("path");
+
+new Promise((resolve) => {
+  console.log('2 :>> ', 2);
   setTimeout(() => {
-    console.log(3)
+    console.log('3 :>> ', 3);
   }, 0);
   resolve()
 }).then(() => {
-  console.log(4)
-  new Promise((resolve) => {
-    console.log(12);
-    resolve()
-  }).then(() => {
-    console.log(11);
-  }).then(() => {
-    console.log(13);
-  })
-}).then(() => {
-  console.log(14);
+  console.log('4 :>> ', 4);
 })
+
+// new Promise((resolve, reject) => {
+//   console.log(2)
+//   setTimeout(() => {
+//     console.log(3)
+//   }, 0);
+//   resolve()
+// }).then(() => {
+//   console.log(4)
+//   new Promise((resolve) => {
+//     console.log(12);
+//     resolve()
+//   }).then(() => {
+//     console.log(11);
+//   }).then(() => {
+//     console.log(13);
+//   })
+// }).then(() => {
+//   console.log(14);
+// })
 
 // setTimeout(() => {
 //   console.log(5)

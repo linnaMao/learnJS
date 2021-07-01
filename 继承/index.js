@@ -101,6 +101,7 @@
 // }
 
 // Son.prototype = new Father()
+// 比起组合继承优化点：避免Father函数内部方法重复执行
 // Son.prototype = Object.create(Father.prototype)
 // const son = new Son('haha', 'man')
 // const son1 = new Son('xixi', 'man')
